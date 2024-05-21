@@ -86,7 +86,7 @@ var clicked = false
 
 
 choices.forEach((choice) => {
-    choice.addEventListener("click", (e) => {
+    choice.addEventListener("click", () => {
         if(clicked == true) return
         clicked = true
         if (choice.innerText.toString().trim() === questions[currentQuestion].answer.toString().trim()) {
@@ -104,7 +104,7 @@ choices.forEach((choice) => {
                 choice.classList.remove("correct");
                 choice.classList.remove("incorrect");
                 choice.classList.remove("selected");
-                window.location.href = "/score.html";
+                window.location.href = "./score.html";
             },1500 );
             return
         }

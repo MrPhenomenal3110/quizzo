@@ -11,7 +11,7 @@ function reset () {
 const button = document.querySelector(".btn")
 button.addEventListener("click", () => {
     reset();
-    window.location.href = "/index.html"
+    window.location.href = "./index.html"
 })
 
 const score = localStorage.getItem("score")
