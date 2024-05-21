@@ -60,6 +60,14 @@ var questions = [
 
 ];
 
+function shuffleQuestions(){
+    questions.sort(() => Math.random() - 0.5)
+    questions.forEach((question, index) => {
+        question.number = index + 1
+    })
+}
+
+
 var totalQuestions = questions.length;
 localStorage.setItem("totalQuestions", totalQuestions);
 
@@ -73,7 +81,10 @@ function showQuestion() {
     choice4.textContent = q.choice4;
     questionNumber.textContent = `Question ${q.number} : `;
 }
+
 var clicked = false
+
+
 choices.forEach((choice) => {
     choice.addEventListener("click", (e) => {
         if(clicked == true) return
@@ -91,6 +102,7 @@ choices.forEach((choice) => {
             localStorage.setItem("score", score);
             setTimeout(() => {
                 choice.classList.remove("correct");
+                choice.classList.remove("incorrect");
                 choice.classList.remove("selected");
                 window.location.href = "/score.html";
             },1500 );
@@ -99,12 +111,14 @@ choices.forEach((choice) => {
         else{
             setTimeout(() => {
                 choice.classList.remove("correct");
+                choice.classList.remove("incorrect");
                 choice.classList.remove("selected");
                 showQuestion();
                 clicked = false
-            },1500 );
+            },1500 )
         }
     })
 })
 
-showQuestion();
+shuffleQuestions();
+showQuestion()
